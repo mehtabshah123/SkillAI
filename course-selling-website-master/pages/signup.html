@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signup | AI Python Bootcamp</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #6c63ff, #a084ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+    }
+
+    .signup-box {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      text-align: center;
+    }
+
+    .signup-box h2 {
+      margin-bottom: 30px;
+      color: #6c63ff;
+    }
+
+    .signup-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .signup-box button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #6c63ff, #8e7dff);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .signup-box button:hover {
+      background: linear-gradient(to right, #4b44d2, #6c63ff);
+      transform: scale(1.02);
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-box">
+    <h2>Create Your Account</h2>
+    <form id="signupForm">
+      <input type="text" id="username" placeholder="👤 Username" required />
+      <input type="password" id="password" placeholder="🔒 Password" required />
+      <input type="password" id="confirmPassword" placeholder="🔒 Confirm Password" required />
+      <p class="error" id="errorMsg"></p>
+      <button type="submit" href="./login.html">Sign Up</button>
+    </form>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById("signupForm");
+      const errorMsg = document.getElementById("errorMsg");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+        if (password !== confirmPassword) {
+          errorMsg.textContent = "⚠️ Passwords do not match!";
+          return;
+        }
+
+        errorMsg.textContent = ""; // Clear any previous errors
+
+        // ✅ Send data to backend
+        fetch('http://localhost:5000/api/auth/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, password })
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.message === "Signup successful") {
+            alert("🎉 Signup successful!");
+            // Redirect to login page
+            window.location.href = "./login.html";
+          } else {
+            errorMsg.textContent = "❌ " + data.message;
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          errorMsg.textContent = "❌ Server error. Try again later.";
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
