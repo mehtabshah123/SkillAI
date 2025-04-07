@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Complete Python Bootcamp</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      
+      background: linear-gradient(to right, #f8f8fa, #ebaec0);
+      padding: 20px;
+      color: #333;
+      
+    }
+
+    /* Top section layout */
+    .top-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .course-image {
+      flex: 1;
+      min-width: 300px;
+      max-width: 800px;
+    }
+
+    .course-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .course-info {
+      flex: 1;
+      min-width: 300px;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .course-info h2 {
+      color: #6c63ff;
+      margin-bottom: 20px;
+      font-size: 26px;
+    }
+
+    .course-info p {
+      margin-bottom: 10px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .rating {
+      margin: 15px 0 20px;
+    }
+
+    .stars span {
+      color: gold;
+      font-size: 18px;
+    }
+
+    #enrollBtn {
+      background: linear-gradient(135deg, #6c63ff, #8e7dff);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(108, 99, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    #enrollBtn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #4b44d2, #6c63ff);
+      box-shadow: 0 8px 18px rgba(108, 99, 255, 0.4);
+    }
+
+    /* Course content styling */
+    .course-content {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      font-size: 16px;
+      line-height: 1.7;
+      color: #333;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .course-content h2 {
+      color: #6c63ff;
+      margin-bottom: 30px;
+      font-size: 28px;
+      text-align: center;
+    }
+
+    .course-content .section {
+      margin-bottom: 30px;
+    }
+
+    .course-content h3 {
+      color: #4b44d2;
+      font-size: 20px;
+      margin-bottom: 10px;
+      border-left: 4px solid #6c63ff;
+      padding-left: 10px;
+    }
+
+    .course-content ul {
+      list-style-type: "✅ ";
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    .course-content li {
+      margin-bottom: 10px;
+    }
+
+    .course-content p {
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .top-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .course-info, .course-content {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Section -->
+  <div class="top-section">
+    <div class="course-image">
+      <img src="images/python.jpg" alt="Course Image" />
+    </div>
+
+    <div class="course-info">
+      <h2>🔥 AI Complete Python Bootcamp</h2>
+
+      <p><strong>📅 Start Date:</strong> April 15, 2025</p>
+      <p><strong>⏳ Duration:</strong> 6 Weeks</p>
+      <p><strong>💰 Price:</strong> ₹3,999</p>
+      <p><strong>📈 Level:</strong> Beginner to Advanced</p>
+      <p><strong>🌐 Language:</strong> English</p>
+      <p><strong>💻 Mode:</strong> Offline (In-person)</p>
+      <p><strong>🎓 Certificate:</strong> Yes, after completion</p>
+
+      <div class="rating">
+        <strong>⭐ Course Rating:</strong>
+        <div class="stars">
+          <span>★ ★ ★ ★ ☆</span> (4.5/5)
+        </div>
+      </div>
+
+      <button id="enrollBtn" href="./pages/form.html">🚀 Enroll Now</button>
+    </div>
+  </div>
+
+  <!-- Course Content Section -->
+  <div class="course-content">
+    <h2>📚 Course Content</h2>
+
+    <!-- Requirements -->
+    <div class="section">
+      <h3>✅ Requirements</h3>
+      <ul>
+        <li>Basic understanding of computer operations</li>
+        <li>No prior programming experience required</li>
+        <li>Willingness to learn AI concepts with Python</li>
+      </ul>
+    </div>
+    <hr>
+    <br>
+
+
+    <!-- Description -->
+    <div class="section">
+      <h3>📝 Description</h3>
+      <p>
+        A fast-paced, hands-on course that blends the power of Python with real-world Artificial Intelligence applications.
+        This bootcamp is packed with interactive coding exercises, projects, and deep-dive professional notes.
+      </p>
+      <p>🌍 Subtitles available in 24+ languages.</p>
+
+      <p>Learn how to perform real-world AI tasks such as:</p>
+      <ul>
+        <li>Build and train Machine Learning models with scikit-learn</li>
+        <li>Develop intelligent applications using Python</li>
+        <li>Use OpenAI APIs for GPT-based applications</li>
+        <li>Perform Data Analysis and Visualization with pandas & matplotlib</li>
+        <li>Work with NumPy, TensorFlow & Keras</li>
+        <li>Deploy AI apps to cloud platforms</li>
+        <li>Implement Natural Language Processing with NLTK and spaCy</li>
+        <li>Version control with Git & GitHub for AI projects</li>
+      </ul>
+    </div>
+    <hr>
+    <br>
+
+    <!-- Who is this course for -->
+    <div class="section">
+      <h3>🎯 Who this course is for</h3>
+      <ul>
+        <li>Beginners curious about AI and Python</li>
+        <li>Students and developers looking to upskill in AI</li>
+        <li>Professionals interested in AI tools and real-time use cases</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+  document.getElementById("enrollBtn").addEventListener("click", function () {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    if (isLoggedIn === "true") {
+      // If logged in, go to the form
+      window.location.href = "./pages/form.html";
+    } else {
+      // If not logged in, redirect to login
+      window.location.href = "./pages/login.html";
+    }
+  });
+</script>
+
+ 
+
+</body>
+</html>
