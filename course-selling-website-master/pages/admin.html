@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Add Course (Admin)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #388e3c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>➕ Add New Course</h2>
+    <form id="courseForm" enctype="multipart/form-data">
+      <input type="text" name="title" placeholder="Course Title" required />
+      <input type="number" name="price" placeholder="Price (₹)" required />
+      <input type="date" name="startDate" placeholder="Start Date" />
+      <input type="text" name="duration" placeholder="Duration (e.g. 4 weeks)" />
+      <select name="level">
+        <option value="">Select Level</option>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
+      </select>
+      <input type="text" name="language" placeholder="Language (e.g. English)" />
+      <select name="mode">
+        <option value="">Select Mode</option>
+        <option value="Online">Online</option>
+        <option value="Offline">Offline</option>
+      </select>
+      <select name="certificate">
+        <option value="">Certificate Offered?</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+      <textarea name="description" placeholder="Course Description" rows="4"></textarea>
+      <input type="number" name="availableSlots" placeholder="Available Slots" />
+      <input type="file" name="image" accept="image/*" />
+      <button type="submit">✅ Add Course</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('courseForm');
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      try {
+        const res = await fetch('http://localhost:5000/api/courses', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          alert('🎉 Course added successfully!');
+          form.reset();
+        } else {
+          alert('❌ Error adding course: ' + data.error);
+        }
+      } catch (err) {
+        alert('❌ Failed to connect to server.');
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>

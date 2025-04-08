@@ -110,8 +110,9 @@
   <link rel="stylesheet" href="../../styles/colors.css" />
 </head>
 <body class="dark">
+  
 
-  <div class="login-section">
+  <div class="login-section" >
     <img class="logo" src="../images/logo.png" alt="Coderclas Logo">
     <div class="login-box">
       <p class="login-title">Log in</p>
@@ -122,10 +123,8 @@
 
         <label for="password">Password</label>
         <input type="password" name="password" id="password" required>
-        <a class="forget" href="#">Forget Password?</a>
 
         <input id="submit" type="submit" value="Login">
-        <a href="./signup.html">Signup?</a>
       </form>
     </div>
   </div>
@@ -133,33 +132,26 @@
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       const form = document.querySelector(".form");
-
+  
+      // Set your admin credentials here
+      const adminUsername = "admin";
+      const adminPassword = "admin123";
+  
       form.addEventListener("submit", function (e) {
         e.preventDefault();
-
+  
         const username = document.getElementById("username").value.trim();
         const password = document.getElementById("password").value.trim();
-
-        fetch('http://localhost:5000/api/auth/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, password })
-        })
-        .then(res => res.json())
-        .then(data => {
-          if (data.message === "Login successful") {
-            alert("✅ Login Successful");
-            window.location.href = "./form.html";
-          } else {
-            alert("❌ " + data.message);
-          }
-        })
-        .catch(err => {
-          console.error(err);
-          alert("❌ Server error. Try again.");
-        });
+  
+        if (username === adminUsername && password === adminPassword) {
+          alert("✅ Admin Login Successful");
+          window.location.href = "./admin.html";  // Redirect to admin panel
+        } else {
+          alert("❌ Invalid admin credentials");
+        }
       });
     });
   </script>
+  
 </body>
 </html>

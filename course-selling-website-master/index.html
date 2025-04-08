@@ -64,7 +64,7 @@
               <a class="text-white text-center" href="pages/about us/about.html">About Us</a>
             </li>
             <li>
-              <a href="pages/login/login.html">
+              <a href="../course-selling-website-master/pages/login.html">
               <button class="btn-design text-bold">Login</button></a>
             </li>
             <label for="check" class="close-menu">
@@ -75,10 +75,10 @@
         </div>
 
           <label for="check" class="open-menu">
-            <i class="text-white fas fa-bars"></i>
+             <i class="text-white fas fa-bars"></i>
           </label>
         </div>
-      </nav>
+      </nav> 
     </header>
 
     <main>
@@ -130,7 +130,7 @@
             What would you like to <span><b>Learn?</b></span>
           </h1>
         </div>
-        <!--<div>
+        <!-- <div>
           <a href="#">
             <div class="card">
               <div>
@@ -192,30 +192,88 @@
             </div>
           </a>
         </div>
+      </div>  --> -->
+
+
+      <style>
+        /* Add your CSS here */
+        .course-container {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+          padding: 20px;
+        }
+        .course-card {
+          background: #f8f8f8;
+          padding: 15px;
+          border-radius: 12px;
+          width: 300px;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .course-image {
+          width: 100%;
+          border-radius: 8px;
+        }
+        .view-details-button {
+          display: inline-block;
+          margin-top: 10px;
+          background: #007BFF;
+          color: white;
+          padding: 8px 12px;
+          border-radius: 5px;
+          text-decoration: none;
+        }
+      </style>
+    </head>
+    <body>
+    
+      <h1 >📚 Available Courses</h1>
+    
+      <!-- ✅ STEP 1: Place this inside <body> to hold the dynamic course cards -->
+      <div class="course-container" id="courseContainer">
+        <!-- Courses will be loaded here by JS -->
       </div>
-    -->
+    
+      <!-- ✅ STEP 2: Add this script just before </body> -->
+      <script>
+        async function loadCourses() {
+          try {
+            const response = await fetch("http://localhost:5000/api/courses");
+            const courses = await response.json();
+            const container = document.getElementById("courseContainer");
+            container.innerHTML = ""; // Clear old content
+      
+            courses.forEach(course => {
+              const card = document.createElement("div");
+              card.className = "course-card";
+      
+              // Check for image; fallback to default
+              const imageSrc = course.imageUrl
+                ? `http://localhost:5000${course.imageUrl}`
+                : "default-course.png";
+      
+              card.innerHTML = `
+                <img src="${imageSrc}" alt="Course Image" class="course-image">
+                <h2 class="course-name">${course.title}</h2>
+                <p class="course-description">${course.description}</p>
+                <p class="course-price">Price: Rs ${course.price}</p>
+                <p class="course-duration">Duration: ${course.duration}</p>
+                <a href="./course-details1.html?id=${course._id}" class="view-details-button">View Details</a>
+              `;
+      
+              container.appendChild(card);
+            });
+          } catch (error) {
+            console.error("Error loading courses:", error);
+          }
+        }
+      
+        // Load on page load
+        window.addEventListener("DOMContentLoaded", loadCourses);
+      </script>
+      
 
-
-      <div class="course-container">
-        <div class="course-card">
-            <img src="images/python.jpg" alt="Course Image 1" class="course-image">
-            <h2 class="course-name">AI programing with Python Master Course</h2>
-            <p class="course-description">BEGINNER TO ADVANCED 🔥</p>
-            <p class="course-price">Price: Rs 999</p>
-            <p class="course-duration">Duration: 4 weeks</p>
-            <a href="course-details1.html" class="view-details-button">View Details</a>
-        </div>
-
-        <div class="course-card">
-            <img src="images/ai ml.jpg" alt="Course Image 2" class="course-image">
-            <h2 class="course-name">AI and Machine Learning for Business</h2>
-            <p class="course-description">This is a short description of Course 2.</p>
-            <p class="course-price">price: Rs 889</p>
-            <p class="course-duration">Duration: 6 weeks</p>
-            <a href="course-details2.html" class="view-details-button">View Details</a>
-        </div>
-
-        <div class="course-card">
+        <!-- <div class="course-card">
             <img src="images/tensor.jpg" alt="Course Image 3" class="course-image">
             <h2 class="course-name">Computer Vision With TensorFlow</h2>
             <p class="course-description">This is a short description of Course 3.</p>
@@ -249,7 +307,7 @@
             <p class="course-price">price: Rs 699</p>
             <p class="course-duration">Duration: 8 weeks</p>
             <a href="course-details6.html" class="view-details-button">View Details</a>
-        </div>
+        </div> -->
 
         <!--<div class="course-card">
           <img src="course-image6.jpg" alt="Course Image 6" class="course-image">
@@ -394,7 +452,7 @@
             If you would like to keep up on the latest posts and courses, <br />
             come by and connect with us on the following links.
           </p>
-        </div>
+        </div> 
 
         <div class="social-card-section">
           <div class="social-card">
